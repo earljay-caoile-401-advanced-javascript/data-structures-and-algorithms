@@ -1,22 +1,20 @@
 'use strict';
 
-const arrayBinarySearch = (nums, target) => {
+const arrayBinarySearch = (arr, target) => {
+  if (!arr || !arr.length) return -1;
+
   let low = 0;
-  let high = nums.length - 1;
+  let high = arr.length - 1;
   let mid;
 
   while (low <= high) {
     mid = Math.round((low + high) / 2);
 
-    if (nums[mid] === target) {
+    if (arr[mid] === target) {
       return mid;
-    }
-
-    if (nums[mid] < target) {
+    } else if (arr[mid] < target) {
       low = mid + 1;
-    }
-
-    if (nums[mid] > target) {
+    } else if (arr[mid] > target) {
       high = mid - 1;
     }
   }
