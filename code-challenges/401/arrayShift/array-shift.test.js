@@ -40,6 +40,8 @@ describe('removeMid', () => {
     const arr2 = [1, 2];
     const arr3 = [1, 2, 3];
     const arr4 = [1, 2, 3, 4];
+
+    expect(removeMid()).toEqual([]);
     expect(removeMid(arr1)).toEqual([]);
     expect(removeMid(arr2)).toEqual([1]);
     expect(removeMid(arr3)).toEqual([1, 3]);
