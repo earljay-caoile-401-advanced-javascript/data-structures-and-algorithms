@@ -14,7 +14,7 @@ const arrayBinarySearch = (arr, target) => {
       return mid;
     } else if (arr[mid] < target) {
       low = mid + 1;
-    } else if (arr[mid] > target) {
+    } else {
       high = mid - 1;
     }
   }

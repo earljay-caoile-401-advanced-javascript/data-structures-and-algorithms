@@ -26,7 +26,7 @@ const shiftArray = (arr, num) => {
 };
 
 const removeMid = arr => {
-  if (!arr) return arr;
+  if (!arr) return [];
 
   switch (arr.length) {
     case 1:
