@@ -13,16 +13,12 @@ For example, if the input is 'Welcome', the output will be:
 ['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', ''].
 ------------------------------------------------------------------------------------------------ */
 
-const howMuchPencil = str => {
+const howMuchPencil = (str) => {
   let result = [];
-  result.push(str);
-  let copy = str.split('');
-
-  for (let i = 0; i < str.length; i++) {
-    copy.splice(0, 1);
-    result.push(copy.join(''));
+  for (let i = 0; i <= str.length; i++) {
+    let word = str.slice(i, str.length);
+    result.push(word);
   }
-
   return result;
 };
 
@@ -78,14 +74,11 @@ const gruffaloCrumble = {
   ],
 };
 
-const listFoods = recipe => {
+const listFoods = (recipe) => {
   let result = [];
-  recipe.ingredients.forEach(item => {
-    let itemArr = item.split(' ');
-    const pie = itemArr.slice(2);
-    result.push(pie.join(' '));
+  recipe.ingredients.forEach(str => {
+    result.push(str.replace(/^([\d]+[ ][\w-]+[ ])/, ''));
   });
-
   return result;
 };
 
@@ -97,14 +90,11 @@ Write a function named splitFoods that uses split to produce the same output as 
 You may also use other string or array methods.
 ------------------------------------------------------------------------------------------------ */
 
-const splitFoods = recipe => {
+const splitFoods = (recipe) => {
   let result = [];
-  recipe.ingredients.forEach(item => {
-    let itemArr = item.split(' ');
-    itemArr.splice(0, 2);
-    result.push(itemArr.join(' '));
+  recipe.ingredients.forEach(str => {
+    result.push(str.split(' ').slice(2, str.length-1).join(' '));
   });
-
   return result;
 };
 
@@ -118,14 +108,11 @@ Write a function named stepAction that takes in the recipe and extracts the acti
 Return a new array containing just the verbs. For example, ['Mix until evenly distributed'] returns ['Mix'].
 ------------------------------------------------------------------------------------------------ */
 
-const stepActions = recipe => {
+const stepActions = (recipe) => {
   let result = [];
-  recipe.steps.forEach(step => {
-    let stepArr = step.split(' ');
-    let pie = stepArr.slice(0, 1);
-    result.push(pie.join(' '));
+  recipe.steps.forEach(str => {
+    result.push(str.split(' ')[0]);
   });
-
   return result;
 };
 
@@ -142,15 +129,14 @@ For example:
   console.log(integers) will print [1, 3, 5]
 ------------------------------------------------------------------------------------------------ */
 
-const removeEvenValues = arr => {
-  for (let i = 0; i < arr.length; i++) {
+const removeEvenValues = (arr) => {
+  for (let i = 0; i < arr.length;) {
     if (arr[i] % 2 === 0) {
       arr.splice(i, 1);
-      i--;
+    } else {
+      i++;
     }
   }
-
-  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -169,21 +155,15 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  if (numberOfCharacters >= str.length) {
+  if (numberOfCharacters > str.length) {
     return '';
-  }
-  if (numberOfCharacters < 0) {
+  } else if (numberOfCharacters < 0) {
     return str;
+  } else {
+    return str.slice(0, str.length - numberOfCharacters);
   }
-
-  let arr = str.split('');
-  while (numberOfCharacters > 0) {
-    arr.pop();
-    numberOfCharacters--;
-  }
-
-  return arr.join('');
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 8 - Stretch Goal
@@ -193,12 +173,9 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 
 const totalSumCSV = str => {
   let total = 0;
-  const arr = str.split(',');
-
-  arr.forEach(num => {
+  str.split(',').forEach(num => {
     total += parseInt(num);
   });
-
   return total;
 };
 
