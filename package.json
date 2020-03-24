@@ -1,7 +1,7 @@
 {
   "name": "dsa",
   "version": "1.0.0",
-  "description": "",
+  "description": "Data Structures and Algorithms Repo for JS 401 Nights (n16)",
   "main": "index.js",
   "scripts": {
     "lint": "eslint",
