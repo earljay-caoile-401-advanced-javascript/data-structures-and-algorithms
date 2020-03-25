@@ -60,5 +60,5 @@ describe('linkedListInsertions', () => {
 
     expect(() => llInsertions.insertBefore(4, 5)).toThrow();
     expect(() => llInsertions.insertAfter(4, 5)).toThrow();
-  })
+  });
 });
