@@ -1,6 +1,6 @@
 'use strict';
 
-const LinkedList = require('../../../data-structures/linkedList/linked-list.js');
+const LinkedList = require('../linked-list.js');
 
 class LinkedListInsertions extends LinkedList {
   append(value) {
