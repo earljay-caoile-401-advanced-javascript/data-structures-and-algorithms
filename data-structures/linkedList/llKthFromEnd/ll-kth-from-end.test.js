@@ -1,9 +1,9 @@
 const { LLKthFromEnd } = require('./ll-kth-from-end.js');
 
 describe('kthFromEnd', () => {
-  let kthFromEndLL;
+  let kthFromEndLL = new LLKthFromEnd();
 
-  beforeEach(() => {
+  afterEach(() => {
     kthFromEndLL = new LLKthFromEnd();
   });
 
@@ -51,5 +51,11 @@ describe('findMiddle', () => {
     kthFromEndLL.insert(0);
     midNode = kthFromEndLL.findMiddle();
     expect(midNode.value).toEqual(2);
+  });
+
+  it('can return null for an empty linked list', () => {
+    kthFromEndLL = new LLKthFromEnd();
+    let midNode = kthFromEndLL.findMiddle();
+    expect(midNode.value).toEqual(null);
   });
 });
