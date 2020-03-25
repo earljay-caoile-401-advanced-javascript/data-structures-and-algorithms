@@ -60,6 +60,9 @@ describe('linkedListInsertions', () => {
   });
 
   it('will generate exceptions for insertBefore() and insertAfter() for invalid values (does not exist in LL)', () => {
+    expect(() => llInsertions.insertBefore(4, 5)).toThrow();
+    expect(() => llInsertions.insertAfter(4, 5)).toThrow();
+
     llInsertions.insert(1);
     llInsertions.insert(2);
     llInsertions.insert(3);
