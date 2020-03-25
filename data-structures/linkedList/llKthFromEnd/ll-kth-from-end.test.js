@@ -56,6 +56,6 @@ describe('findMiddle', () => {
   it('can return null for an empty linked list', () => {
     kthFromEndLL = new LLKthFromEnd();
     let midNode = kthFromEndLL.findMiddle();
-    expect(midNode.value).toEqual(null);
+    expect(midNode).toEqual(null);
   });
 });
