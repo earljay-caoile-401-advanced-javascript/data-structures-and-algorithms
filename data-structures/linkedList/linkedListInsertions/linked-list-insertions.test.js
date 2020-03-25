@@ -3,9 +3,9 @@
 const LinkedListInsertions = require('./linked-list-insertions.js');
 
 describe('linkedListInsertions', () => {
-  let llInsertions;
+  let llInsertions = new LinkedListInsertions();
 
-  beforeEach(() => {
+  afterEach(() => {
     llInsertions = new LinkedListInsertions();
   });
 
@@ -38,6 +38,13 @@ describe('linkedListInsertions', () => {
     expect(llInsertions.head.value).toEqual(5);
     expect(llInsertions.head.next.value).toEqual(3);
     expect(llInsertions.head.next.next.value).toEqual(4);
+
+    llInsertions.insertBefore(4, 6);
+    expect(llInsertions.head.value).toEqual(5);
+    expect(llInsertions.head.next.value).toEqual(3);
+    expect(llInsertions.head.next.next.value).toEqual(6);
+    expect(llInsertions.head.next.next.next.value).toEqual(4);
+    expect(llInsertions.head.next.next.next.next).toEqual(null);
   });
 
   it('can add a new node with a given value after an existing node with another given value with insertAfter()', () => {
@@ -59,9 +66,27 @@ describe('linkedListInsertions', () => {
     expect(llInsertions.head.next.next.next.value).toEqual(5);
   });
 
-  it('will generate exceptions for insertBefore() and insertAfter() for invalid values (does not exist in LL)', () => {
+  it('can delete a node', () => {
+    llInsertions.insert(3);
+    llInsertions.insert(2);
+    llInsertions.insert(1);
+    llInsertions.delete(2);
+
+    expect(llInsertions.head.value).toEqual(1);
+    expect(llInsertions.head.next.value).toEqual(3);
+
+    llInsertions.delete(1);
+    expect(llInsertions.head.value).toEqual(3);
+    expect(llInsertions.head.next).toEqual(null);
+
+    llInsertions.delete(3);
+    expect(llInsertions.head).toEqual(null);
+  });
+
+  it('will generate exceptions for insertBefore(), insertAfter(), and delete() for invalid values (does not exist in LL)', () => {
     expect(() => llInsertions.insertBefore(4, 5)).toThrow();
     expect(() => llInsertions.insertAfter(4, 5)).toThrow();
+    expect(() => llInsertions.delete(1)).toThrow();
 
     llInsertions.insert(1);
     llInsertions.insert(2);
@@ -69,5 +94,6 @@ describe('linkedListInsertions', () => {
 
     expect(() => llInsertions.insertBefore(4, 5)).toThrow();
     expect(() => llInsertions.insertAfter(4, 5)).toThrow();
+    expect(() => llInsertions.delete(4)).toThrow();
   });
 });

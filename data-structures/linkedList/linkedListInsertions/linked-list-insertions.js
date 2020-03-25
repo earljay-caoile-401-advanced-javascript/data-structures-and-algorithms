@@ -51,6 +51,27 @@ class LinkedListInsertions extends LinkedList {
 
     throw new Error('value does not exist in linked list');
   }
+
+  delete(val) {
+    let current = this.head;
+    if (current.value === val) {
+      this.head = current.next;
+      current.next = null;
+      return;
+    }
+
+    while (current.next) {
+      if (current.next.value === val) {
+        let oldNode = current.next;
+        current.next = current.next.next;
+        oldNode.next = null;
+        return;
+      }
+      current = current.next;
+    }
+
+    throw new Error('value does not exist in linked list');
+  }
 }
 
 module.exports = LinkedListInsertions;
