@@ -51,6 +51,12 @@ describe('linkedListInsertions', () => {
     expect(llInsertions.head.value).toEqual(4);
     expect(llInsertions.head.next.value).toEqual(3);
     expect(llInsertions.head.next.next.value).toEqual(5);
+
+    llInsertions.insertAfter(4, 6);
+    expect(llInsertions.head.value).toEqual(4);
+    expect(llInsertions.head.next.value).toEqual(6);
+    expect(llInsertions.head.next.next.value).toEqual(3);
+    expect(llInsertions.head.next.next.next.value).toEqual(5);
   });
 
   it('will generate exceptions for insertBefore() and insertAfter() for invalid values (does not exist in LL)', () => {
