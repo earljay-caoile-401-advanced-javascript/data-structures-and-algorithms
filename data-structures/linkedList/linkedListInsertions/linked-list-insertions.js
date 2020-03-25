@@ -1,6 +1,6 @@
 'use strict';
 
-const LinkedList = require('../linked-list.js');
+const { LinkedList, Node } = require('../linked-list.js');
 
 class LinkedListInsertions extends LinkedList {
   append(value) {
@@ -50,13 +50,6 @@ class LinkedListInsertions extends LinkedList {
     }
 
     throw new Error('value does not exist in linked list');
-  }
-}
-
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
   }
 }
 
