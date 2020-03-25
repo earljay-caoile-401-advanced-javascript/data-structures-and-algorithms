@@ -29,6 +29,22 @@ class LLKthFromEnd extends LinkedList {
 
     return walker.value;
   }
+
+  findMiddle() {
+    if (!this.head) {
+      return null;
+    }
+
+    let walker = this.head;
+    let runner = this.head;
+
+    while (walker && runner) {
+      runner = runner && runner.next ? runner.next.next : null;
+      walker = runner ? walker.next : walker;
+    }
+
+    return walker;
+  }
 }
 
 module.exports = { LLKthFromEnd };
