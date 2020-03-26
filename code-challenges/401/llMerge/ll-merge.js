@@ -1,7 +1,6 @@
 'use strict';
 const {
   LinkedList,
-  Node,
 } = require('../../../data-structures/linkedList/linked-list.js');
 
 const mergeLists = (list1, list2) => {
