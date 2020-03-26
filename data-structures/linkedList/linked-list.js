@@ -1,17 +1,8 @@
 'use strict';
 
 class LinkedList {
-  constructor(head) {
-    // this.head = head ? (typeof head === Node) ? head : (typeof head === 'number') ? new Node(head) : null;
-    if (head) {
-      if (typeof head === 'object') {
-        this.head = head;
-      } else {
-        this.head = new Node(head);
-      }
-    } else {
-      this.head = null;
-    }
+  constructor(val) {
+    this.head = val ? new Node(val) : null;
   }
 
   insert(value) {

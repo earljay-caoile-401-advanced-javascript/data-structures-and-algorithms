@@ -29,10 +29,19 @@ const mergeListsSorted = (list1, list2) => {
   if (!list1 || !list1.head) return list2;
   if (!list2 || !list2.head) return list1;
 
-  let dummy = new Node(-1);
-  let currRes = dummy;
+  const res = new LinkedList();
   let curr1 = list1.head;
   let curr2 = list2.head;
+
+  if (curr1.value < curr2.value) {
+    res.head = curr1;
+    curr1 = curr1.next;
+  } else {
+    res.head = curr2;
+    curr2 = curr2.next;
+  }
+
+  let currRes = res.head;
 
   while (curr1 && curr2) {
     if (curr1.value < curr2.value) {
@@ -46,7 +55,7 @@ const mergeListsSorted = (list1, list2) => {
   }
 
   currRes.next = curr1 ? curr1 : curr2;
-  return new LinkedList(dummy.next);
+  return res;
 };
 
 module.exports = { mergeLists, mergeListsSorted };

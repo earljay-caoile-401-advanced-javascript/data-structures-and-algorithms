@@ -8,9 +8,9 @@ describe('mergeLists', () => {
   let ll1 = new LinkedList();
   let ll2 = new LinkedList();
 
-  beforeEach(() => {
+  afterEach(() => {
     ll1 = new LinkedList();
-    ll1 = new LinkedList();
+    ll2 = new LinkedList();
   });
 
   it('can merge 2 linked lists with values in both', () => {
@@ -99,10 +99,10 @@ describe('mergeListsSorted', () => {
 
   afterEach(() => {
     ll1 = new LinkedList();
-    ll1 = new LinkedList();
+    ll2 = new LinkedList();
   });
 
-  it('can take in two populated lists and return a sorted list', () => {
+  it('can take in two sorted lists and return a merged sorted list', () => {
     ll1.insert(8);
     ll1.insert(5);
     ll1.insert(4);
@@ -117,6 +117,25 @@ describe('mergeListsSorted', () => {
     let currRes = mergeRes.head;
 
     for (let i = 1; i <= 8; i++) {
+      expect(currRes.value).toEqual(i);
+      currRes = currRes.next;
+    }
+  });
+
+  it('can take in two merge lists of different sizes and return a sorted list', () => {
+    ll1.insert(7);
+    ll1.insert(5);
+    ll1.insert(4);
+    ll1.insert(1);
+
+    ll2.insert(6);
+    ll2.insert(3);
+    ll2.insert(2);
+
+    const mergeRes = mergeListsSorted(ll1, ll2);
+    let currRes = mergeRes.head;
+
+    for (let i = 1; i <= 7; i++) {
       expect(currRes.value).toEqual(i);
       currRes = currRes.next;
     }
