@@ -24,12 +24,12 @@ describe('mergeLists', () => {
 
     const mergeRes = mergeLists(ll1, ll2);
 
-    expect(mergeRes.head.value).toEqual(1);
-    expect(mergeRes.head.next.value).toEqual(2);
-    expect(mergeRes.head.next.next.value).toEqual(3);
-    expect(mergeRes.head.next.next.next.value).toEqual(4);
-    expect(mergeRes.head.next.next.next.next.value).toEqual(5);
-    expect(mergeRes.head.next.next.next.next.next.value).toEqual(6);
+    expect(mergeRes.head.val).toEqual(1);
+    expect(mergeRes.head.next.val).toEqual(2);
+    expect(mergeRes.head.next.next.val).toEqual(3);
+    expect(mergeRes.head.next.next.next.val).toEqual(4);
+    expect(mergeRes.head.next.next.next.next.val).toEqual(5);
+    expect(mergeRes.head.next.next.next.next.next.val).toEqual(6);
   });
 
   it('can return the populated linked list when one linked list is empty', () => {
@@ -40,9 +40,9 @@ describe('mergeLists', () => {
     const mergeRes1 = mergeLists(ll1, ll2);
 
     expect(mergeRes1).toEqual(ll2);
-    expect(mergeRes1.head.value).toEqual(1);
-    expect(mergeRes1.head.next.value).toEqual(2);
-    expect(mergeRes1.head.next.next.value).toEqual(3);
+    expect(mergeRes1.head.val).toEqual(1);
+    expect(mergeRes1.head.next.val).toEqual(2);
+    expect(mergeRes1.head.next.next.val).toEqual(3);
 
     ll2 = new LinkedList();
     ll1 = new LinkedList();
@@ -53,9 +53,9 @@ describe('mergeLists', () => {
 
     const mergeRes2 = mergeLists(ll1, ll2);
     expect(mergeRes2).toEqual(ll1);
-    expect(mergeRes2.head.value).toEqual(3);
-    expect(mergeRes2.head.next.value).toEqual(4);
-    expect(mergeRes2.head.next.next.value).toEqual(5);
+    expect(mergeRes2.head.val).toEqual(3);
+    expect(mergeRes2.head.next.val).toEqual(4);
+    expect(mergeRes2.head.next.next.val).toEqual(5);
   });
 
   it('can merge 2 linked lists with different amount of nodes', () => {
@@ -70,12 +70,12 @@ describe('mergeLists', () => {
     const mergeRes1 = mergeLists(ll1, ll2);
     expect(mergeRes1.head.next).toEqual(ll2.head);
     expect(ll1.head.next).toEqual(ll2.head);
-    expect(mergeRes1.head.value).toEqual(5);
-    expect(mergeRes1.head.next.value).toEqual(1);
-    expect(mergeRes1.head.next.next.value).toEqual(3);
-    expect(mergeRes1.head.next.next.next.value).toEqual(2);
-    expect(mergeRes1.head.next.next.next.next.value).toEqual(4);
-    expect(mergeRes1.head.next.next.next.next.next.value).toEqual(6);
+    expect(mergeRes1.head.val).toEqual(5);
+    expect(mergeRes1.head.next.val).toEqual(1);
+    expect(mergeRes1.head.next.next.val).toEqual(3);
+    expect(mergeRes1.head.next.next.next.val).toEqual(2);
+    expect(mergeRes1.head.next.next.next.next.val).toEqual(4);
+    expect(mergeRes1.head.next.next.next.next.next.val).toEqual(6);
 
     ll2 = new LinkedList();
     ll1 = new LinkedList();
@@ -87,9 +87,9 @@ describe('mergeLists', () => {
 
     const mergeRes2 = mergeLists(ll1, ll2);
 
-    expect(mergeRes2.head.value).toEqual(4);
-    expect(mergeRes2.head.next.value).toEqual(1);
-    expect(mergeRes2.head.next.next.value).toEqual(5);
+    expect(mergeRes2.head.val).toEqual(4);
+    expect(mergeRes2.head.next.val).toEqual(1);
+    expect(mergeRes2.head.next.next.val).toEqual(5);
   });
 });
 
@@ -117,7 +117,7 @@ describe('mergeListsSorted', () => {
     let currRes = mergeRes.head;
 
     for (let i = 1; i <= 8; i++) {
-      expect(currRes.value).toEqual(i);
+      expect(currRes.val).toEqual(i);
       currRes = currRes.next;
     }
   });
@@ -136,7 +136,7 @@ describe('mergeListsSorted', () => {
     let currRes = mergeRes.head;
 
     for (let i = 1; i <= 7; i++) {
-      expect(currRes.value).toEqual(i);
+      expect(currRes.val).toEqual(i);
       currRes = currRes.next;
     }
   });

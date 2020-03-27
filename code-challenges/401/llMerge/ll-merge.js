@@ -32,7 +32,7 @@ const mergeListsSorted = (list1, list2) => {
   let curr1 = list1.head;
   let curr2 = list2.head;
 
-  if (curr1.value < curr2.value) {
+  if (curr1.val < curr2.val) {
     res.head = curr1;
     curr1 = curr1.next;
   } else {
@@ -43,7 +43,7 @@ const mergeListsSorted = (list1, list2) => {
   let currRes = res.head;
 
   while (curr1 && curr2) {
-    if (curr1.value < curr2.value) {
+    if (curr1.val < curr2.val) {
       currRes.next = curr1;
       curr1 = curr1.next;
     } else {
