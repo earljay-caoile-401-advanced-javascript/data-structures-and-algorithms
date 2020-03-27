@@ -27,7 +27,7 @@ class LLKthFromEnd extends LinkedList {
       walker = walker.next;
     }
 
-    return walker.value;
+    return walker.val;
   }
 
   findMiddle() {

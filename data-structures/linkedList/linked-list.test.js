@@ -15,11 +15,11 @@ describe('linkedList', () => {
 
   it('can add values to a linked list with insert()', () => {
     linkedList.insert(3);
-    expect(linkedList.head.value).toEqual(3);
+    expect(linkedList.head.val).toEqual(3);
 
     linkedList.insert(7);
-    expect(linkedList.head.value).toEqual(7);
-    expect(linkedList.head.next.value).toEqual(3);
+    expect(linkedList.head.val).toEqual(7);
+    expect(linkedList.head.next.val).toEqual(3);
   });
 
   it('can search for values in a linked list with includes()', () => {

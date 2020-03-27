@@ -15,35 +15,35 @@ describe('linkedListInsertions', () => {
 
   it('can add values to the end of a linked list with append()', () => {
     llInsertions.append(1);
-    expect(llInsertions.head.value).toEqual(1);
+    expect(llInsertions.head.val).toEqual(1);
 
     llInsertions.append(2);
-    expect(llInsertions.head.value).toEqual(1);
-    expect(llInsertions.head.next.value).toEqual(2);
+    expect(llInsertions.head.val).toEqual(1);
+    expect(llInsertions.head.next.val).toEqual(2);
 
     llInsertions.append(3);
-    expect(llInsertions.head.value).toEqual(1);
-    expect(llInsertions.head.next.value).toEqual(2);
-    expect(llInsertions.head.next.next.value).toEqual(3);
+    expect(llInsertions.head.val).toEqual(1);
+    expect(llInsertions.head.next.val).toEqual(2);
+    expect(llInsertions.head.next.next.val).toEqual(3);
   });
 
   it('can add a new node with a given value before an existing node with another given value with insertBefore()', () => {
     llInsertions.insert(4);
 
     llInsertions.insertBefore(4, 3);
-    expect(llInsertions.head.value).toEqual(3);
-    expect(llInsertions.head.next.value).toEqual(4);
+    expect(llInsertions.head.val).toEqual(3);
+    expect(llInsertions.head.next.val).toEqual(4);
 
     llInsertions.insertBefore(3, 5);
-    expect(llInsertions.head.value).toEqual(5);
-    expect(llInsertions.head.next.value).toEqual(3);
-    expect(llInsertions.head.next.next.value).toEqual(4);
+    expect(llInsertions.head.val).toEqual(5);
+    expect(llInsertions.head.next.val).toEqual(3);
+    expect(llInsertions.head.next.next.val).toEqual(4);
 
     llInsertions.insertBefore(4, 6);
-    expect(llInsertions.head.value).toEqual(5);
-    expect(llInsertions.head.next.value).toEqual(3);
-    expect(llInsertions.head.next.next.value).toEqual(6);
-    expect(llInsertions.head.next.next.next.value).toEqual(4);
+    expect(llInsertions.head.val).toEqual(5);
+    expect(llInsertions.head.next.val).toEqual(3);
+    expect(llInsertions.head.next.next.val).toEqual(6);
+    expect(llInsertions.head.next.next.next.val).toEqual(4);
     expect(llInsertions.head.next.next.next.next).toEqual(null);
   });
 
@@ -51,19 +51,19 @@ describe('linkedListInsertions', () => {
     llInsertions.insert(4);
 
     llInsertions.insertAfter(4, 3);
-    expect(llInsertions.head.value).toEqual(4);
-    expect(llInsertions.head.next.value).toEqual(3);
+    expect(llInsertions.head.val).toEqual(4);
+    expect(llInsertions.head.next.val).toEqual(3);
 
     llInsertions.insertAfter(3, 5);
-    expect(llInsertions.head.value).toEqual(4);
-    expect(llInsertions.head.next.value).toEqual(3);
-    expect(llInsertions.head.next.next.value).toEqual(5);
+    expect(llInsertions.head.val).toEqual(4);
+    expect(llInsertions.head.next.val).toEqual(3);
+    expect(llInsertions.head.next.next.val).toEqual(5);
 
     llInsertions.insertAfter(4, 6);
-    expect(llInsertions.head.value).toEqual(4);
-    expect(llInsertions.head.next.value).toEqual(6);
-    expect(llInsertions.head.next.next.value).toEqual(3);
-    expect(llInsertions.head.next.next.next.value).toEqual(5);
+    expect(llInsertions.head.val).toEqual(4);
+    expect(llInsertions.head.next.val).toEqual(6);
+    expect(llInsertions.head.next.next.val).toEqual(3);
+    expect(llInsertions.head.next.next.next.val).toEqual(5);
   });
 
   it('can delete a node', () => {
@@ -72,11 +72,11 @@ describe('linkedListInsertions', () => {
     llInsertions.insert(1);
     llInsertions.delete(2);
 
-    expect(llInsertions.head.value).toEqual(1);
-    expect(llInsertions.head.next.value).toEqual(3);
+    expect(llInsertions.head.val).toEqual(1);
+    expect(llInsertions.head.next.val).toEqual(3);
 
     llInsertions.delete(1);
-    expect(llInsertions.head.value).toEqual(3);
+    expect(llInsertions.head.val).toEqual(3);
     expect(llInsertions.head.next).toEqual(null);
 
     llInsertions.delete(3);

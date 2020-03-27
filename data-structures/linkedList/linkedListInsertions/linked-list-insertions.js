@@ -3,8 +3,8 @@
 const { LinkedList, Node } = require('../linked-list.js');
 
 class LinkedListInsertions extends LinkedList {
-  append(value) {
-    const newNode = new Node(value);
+  append(val) {
+    const newNode = new Node(val);
     if (!this.head) {
       this.head = newNode;
       return;
@@ -17,16 +17,16 @@ class LinkedListInsertions extends LinkedList {
     current.next = newNode;
   }
 
-  insertBefore(value, newValue) {
-    if (this.head.value === value) {
-      this.insert(newValue);
+  insertBefore(val, newVal) {
+    if (this.head.val === val) {
+      this.insert(newVal);
       return;
     }
 
-    const newNode = new Node(newValue);
+    const newNode = new Node(newVal);
     let current = this.head;
     while (current.next) {
-      if (current.next.value === value) {
+      if (current.next.val === val) {
         newNode.next = current.next;
         current.next = newNode;
         return;
@@ -37,11 +37,11 @@ class LinkedListInsertions extends LinkedList {
     throw new Error('value does not exist in linked list');
   }
 
-  insertAfter(value, newValue) {
-    const newNode = new Node(newValue);
+  insertAfter(val, newVal) {
+    const newNode = new Node(newVal);
     let current = this.head;
     while (current) {
-      if (current.value === value) {
+      if (current.val === val) {
         newNode.next = current.next;
         current.next = newNode;
         return;
@@ -54,14 +54,14 @@ class LinkedListInsertions extends LinkedList {
 
   delete(val) {
     let current = this.head;
-    if (current.value === val) {
+    if (current.val === val) {
       this.head = current.next;
       current.next = null;
       return;
     }
 
     while (current.next) {
-      if (current.next.value === val) {
+      if (current.next.val === val) {
         let oldNode = current.next;
         current.next = current.next.next;
         oldNode.next = null;

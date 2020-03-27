@@ -1,20 +1,20 @@
 'use strict';
 
 class LinkedList {
-  constructor() {
-    this.head = null;
+  constructor(val) {
+    this.head = val ? new Node(val) : null;
   }
 
-  insert(value) {
-    const newNode = new Node(value);
+  insert(val) {
+    const newNode = new Node(val);
     newNode.next = this.head;
     this.head = newNode;
   }
 
-  includes(value) {
+  includes(val) {
     let current = this.head;
     while (current) {
-      if (current.value === value) {
+      if (current.val === val) {
         return true;
       }
       current = current.next;
@@ -26,7 +26,7 @@ class LinkedList {
     let res = '';
     let current = this.head;
     while (current) {
-      res += `${current.value} -> `;
+      res += `${current.val} -> `;
       current = current.next;
     }
     return res + 'NULL';
@@ -34,8 +34,8 @@ class LinkedList {
 }
 
 class Node {
-  constructor(value) {
-    this.value = value;
+  constructor(val) {
+    this.val = val;
     this.next = null;
   }
 }
