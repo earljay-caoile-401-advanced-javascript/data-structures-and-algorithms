@@ -8,7 +8,7 @@ const arrayBinarySearch = (arr, target) => {
   let mid;
 
   while (low <= high) {
-    mid = Math.round((low + high) / 2);
+    mid = low + ((high - low) >>> 1);
 
     if (arr[mid] === target) {
       return mid;
