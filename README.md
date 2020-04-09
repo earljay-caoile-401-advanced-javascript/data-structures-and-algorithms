@@ -15,3 +15,4 @@ Data structures and algorithms repo for Code Fellows JavaScript 401 course
 7. [Merge Two Linked Lists](/code-challenges/401/llMerge/README.md)
 8. [Stack and Queue Implementation](/data-structures/stackAndQueue/README.md)
 9. [Queue with Two Stacks](/code-challenges/401/queueWithStacks/README.md)
+10. [FIFO Animal Shelter](/code-challenges/401/fifoAnimalShelter/README.md)
