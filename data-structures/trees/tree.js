@@ -1,7 +1,5 @@
 'use strict';
 
-const Queue = require('../stackAndQueue/queue.js');
-
 class BinaryTree {
   constructor(rootVal) {
     this.root = rootVal || rootVal === 0 ? new Node(rootVal) : null;
@@ -72,11 +70,11 @@ class BinarySearchTree extends BinaryTree {
       return;
     }
 
-    const breadth = new Queue();
-    breadth.enqueue(this.root);
+    const queue = [];
+    queue.push(this.root);
 
-    while (breadth.peek()) {
-      const front = breadth.dequeue();
+    while (queue.length) {
+      const front = queue.shift();
 
       if (val === front.val) {
         return;
@@ -84,7 +82,7 @@ class BinarySearchTree extends BinaryTree {
 
       if (val < front.val) {
         if (front.left) {
-          breadth.enqueue(front.left);
+          queue.push(front.left);
         } else {
           front.left = node;
           return;
@@ -93,7 +91,7 @@ class BinarySearchTree extends BinaryTree {
 
       if (val > front.val) {
         if (front.right) {
-          breadth.enqueue(front.right);
+          queue.push(front.right);
         } else {
           front.right = node;
           return;
