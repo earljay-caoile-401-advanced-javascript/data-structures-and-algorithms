@@ -1,6 +1,6 @@
 'use strict';
 
-const { BinaryTree, BinarySearchTree } = require('./tree.js');
+const { BinarySearchTree } = require('./tree.js');
 
 describe('binary search tree', () => {
   let binarySearchTree;
