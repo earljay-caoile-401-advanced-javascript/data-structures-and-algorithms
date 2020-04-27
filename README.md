@@ -17,3 +17,4 @@ Data structures and algorithms repo for Code Fellows JavaScript 401 course
 9. [Queue with Two Stacks](/code-challenges/401/queueWithStacks/README.md)
 10. [FIFO Animal Shelter](/code-challenges/401/fifoAnimalShelter/README.md)
 11. [Multi-bracket Validation](/code-challenges/401/multiBracketValidation/README.md)
+12. [Trees Implementation](/data-structures/trees/README.md)
