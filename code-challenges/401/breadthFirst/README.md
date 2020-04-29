@@ -1,4 +1,5 @@
 # Breadth-first Traversal
+![bread pic](../../../assets/bread-pic.png "bread first pic")
 
 "Bread first" - Amanda Iverson
 
