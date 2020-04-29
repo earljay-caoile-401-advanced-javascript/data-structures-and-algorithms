@@ -2,6 +2,7 @@
 
 const Stack = require('./stack.js');
 const Queue = require('./queue.js');
+console.log = jest.fn();
 
 describe('stack', () => {
   let stack;
