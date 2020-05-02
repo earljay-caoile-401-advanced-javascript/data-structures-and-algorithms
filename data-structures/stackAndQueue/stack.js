@@ -1,5 +1,7 @@
 'use strict';
 
+const Node = require('./node.js');
+
 class Stack {
   constructor() {
     this.top = null;
@@ -31,13 +33,6 @@ class Stack {
       const val = this.pop().val;
       console.log(val);
     }
-  }
-}
-
-class Node {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
   }
 }
 

@@ -1,5 +1,7 @@
 'use strict';
 
+const Node = require('./node.js');
+
 class Queue {
   constructor() {
     this.front = null;
@@ -38,13 +40,6 @@ class Queue {
       const val = this.dequeue().val;
       console.log(val);
     }
-  }
-}
-
-class Node {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
   }
 }
 
