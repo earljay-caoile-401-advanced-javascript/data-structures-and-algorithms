@@ -1,5 +1,7 @@
 'use strict';
 
+const Node = require('./node.js');
+
 class BinaryTree {
   constructor(rootVal) {
     this.root = rootVal || rootVal === 0 ? new Node(rootVal) : null;
@@ -127,12 +129,4 @@ class BinarySearchTree extends BinaryTree {
   }
 }
 
-class Node {
-  constructor(val) {
-    this.val = val;
-    this.left = null;
-    this.right = null;
-  }
-}
-
-module.exports = { Node, BinaryTree, BinarySearchTree };
+module.exports = { BinaryTree, BinarySearchTree };

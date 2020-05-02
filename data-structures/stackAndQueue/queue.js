@@ -1,30 +1,44 @@
 'use strict';
 
+const Node = require('./node.js');
+
 class Queue {
   constructor() {
-    this.storage = new Array();
+    this.front = null;
+    this.rear = null;
   }
 
   enqueue(item) {
-    this.storage.push(item);
+    const newNode = new Node(item);
+
+    if (this.front) {
+      this.rear.next = newNode;
+      this.rear = newNode;
+    } else {
+      this.front = newNode;
+      this.rear = newNode;
+    }
   }
 
   dequeue() {
-    return this.storage.shift();
+    const delNode = this.front;
+    this.front = this.front.next;
+    delNode.next = null;
+    return delNode.val;
   }
 
   peek() {
-    return this.storage[0];
+    return this.front ? this.front.val : null;
   }
 
   isEmpty() {
-    return this.storage.length === 0;
+    return this.front === null;
   }
 
   print() {
-    let value;
-    while ((value = this.dequeue())) {
-      console.log(value);
+    while (this.peek()) {
+      const val = this.dequeue().val;
+      console.log(val);
     }
   }
 }

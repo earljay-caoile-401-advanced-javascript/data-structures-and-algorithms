@@ -19,3 +19,4 @@ Data structures and algorithms repo for Code Fellows JavaScript 401 course
 11. [Multi-bracket Validation](/code-challenges/401/multiBracketValidation/README.md)
 12. [Trees Implementation](/data-structures/trees/README.md)
 13. [FizzBuzz Tree](/code-challenges/401/fizzBuzzTree/README.md)
+14. [Breadth-First Traversal](/code-challenges/401/breadthFirst/README.md)

@@ -1,5 +1,8 @@
+'use strict';
+
+const Node = require('../../../data-structures/trees/node.js');
 const fizzBuzzTree = require('./fizz-buzz-tree.js');
-const { Node, BinaryTree } = require('../../../data-structures/trees/tree.js');
+const { BinaryTree } = require('../../../data-structures/trees/tree.js');
 
 describe('fizzBuzzTree', () => {
   let binaryTree = new BinaryTree();

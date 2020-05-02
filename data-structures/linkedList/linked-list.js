@@ -1,5 +1,7 @@
 'use strict';
 
+const Node = require('./node.js');
+
 class LinkedList {
   constructor(val) {
     this.head = val ? new Node(val) : null;
@@ -30,13 +32,6 @@ class LinkedList {
       current = current.next;
     }
     return res + 'NULL';
-  }
-}
-
-class Node {
-  constructor(val) {
-    this.val = val;
-    this.next = null;
   }
 }
 

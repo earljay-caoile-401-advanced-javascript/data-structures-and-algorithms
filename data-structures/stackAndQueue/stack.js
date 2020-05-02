@@ -1,30 +1,37 @@
 'use strict';
 
+const Node = require('./node.js');
+
 class Stack {
   constructor() {
-    this.storage = new Array();
+    this.top = null;
   }
 
   push(item) {
-    this.storage.push(item);
+    const newNode = new Node(item);
+    newNode.next = this.top;
+    this.top = newNode;
   }
 
   pop() {
-    return this.storage.pop();
+    const delNode = this.top;
+    this.top = this.top.next;
+    delNode.next = null;
+    return delNode.val;
   }
 
   peek() {
-    return this.storage[this.storage.length - 1];
+    return this.top ? this.top.val : null;
   }
 
   isEmpty() {
-    return this.storage.length === 0;
+    return this.top === null;
   }
 
   print() {
-    let value;
-    while ((value = this.pop())) {
-      console.log(value);
+    while (this.peek()) {
+      const val = this.pop().val;
+      console.log(val);
     }
   }
 }

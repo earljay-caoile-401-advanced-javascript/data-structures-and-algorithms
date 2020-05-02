@@ -2,6 +2,7 @@
 
 const Stack = require('./stack.js');
 const Queue = require('./queue.js');
+console.log = jest.fn();
 
 describe('stack', () => {
   let stack;
@@ -12,22 +13,22 @@ describe('stack', () => {
 
   it('can successfully push onto a stack', () => {
     stack.push(1);
-    expect(stack.storage[0]).toEqual(1);
+    expect(stack.top.val).toEqual(1);
   });
 
   it('Can successfully push multiple values onto a stack', () => {
     stack.push(1);
     stack.push(2);
-    expect(stack.storage[0]).toEqual(1);
-    expect(stack.storage[1]).toEqual(2);
+    expect(stack.top.val).toEqual(2);
+    expect(stack.top.next.val).toEqual(1);
   });
 
   it('Can successfully pop off the stack', () => {
     stack.push(1);
     stack.push(2);
     const popVal = stack.pop();
-    expect(stack.storage[0]).toEqual(1);
-    expect(!!stack.storage[1]).toEqual(false);
+    expect(stack.top.val).toEqual(1);
+    expect(stack.top.next).toEqual(null);
     expect(popVal).toEqual(2);
   });
 
@@ -71,14 +72,14 @@ describe('queue', () => {
 
   it('Can successfully enqueue into a queue', () => {
     queue.enqueue(1);
-    expect(queue.storage[0]).toEqual(1);
+    expect(queue.peek()).toEqual(1);
   });
 
   it('Can successfully enqueue multiple values into a queue', () => {
     queue.enqueue(1);
     queue.enqueue(2);
-    expect(queue.storage[0]).toEqual(1);
-    expect(queue.storage[1]).toEqual(2);
+    expect(queue.front.val).toEqual(1);
+    expect(queue.rear.val).toEqual(2);
   });
 
   it('Can successfully dequeue out of a queue the expected value', () => {
@@ -86,8 +87,8 @@ describe('queue', () => {
     queue.enqueue(2);
 
     const dequeueVal = queue.dequeue();
-    expect(queue.storage[0]).toEqual(2);
-    expect(!!queue.storage[1]).toEqual(false);
+    expect(queue.front.val).toEqual(2);
+    expect(queue.front.next).toEqual(null);
     expect(dequeueVal).toEqual(1);
   });
 
