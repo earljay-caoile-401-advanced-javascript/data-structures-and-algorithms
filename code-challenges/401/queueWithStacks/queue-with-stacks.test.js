@@ -10,14 +10,14 @@ describe('queue', () => {
 
   it('Can successfully enqueue into a queue', () => {
     queue.enqueue(1);
-    expect(queue.stack1.storage[0]).toEqual(1);
+    expect(queue.stack1.peek()).toEqual(1);
   });
 
   it('Can successfully enqueue multiple values into a queue', () => {
     queue.enqueue(1);
     queue.enqueue(2);
-    expect(queue.stack1.storage[0]).toEqual(1);
-    expect(queue.stack1.storage[1]).toEqual(2);
+    expect(queue.stack1.peek()).toEqual(2);
+    expect(queue.stack1.top.next.val).toEqual(1);
   });
 
   it('Can successfully dequeue out of a queue the expected value', () => {
@@ -25,8 +25,8 @@ describe('queue', () => {
     queue.enqueue(2);
 
     const dequeueVal = queue.dequeue();
-    expect(queue.stack1.storage[0]).toEqual(2);
-    expect(!!queue.stack1.storage[1]).toEqual(false);
+    expect(queue.stack1.peek()).toEqual(2);
+    expect(queue.stack1.top.next).toEqual(null);
     expect(dequeueVal).toEqual(1);
   });
 
@@ -37,13 +37,11 @@ describe('queue', () => {
     queue.dequeue();
     queue.dequeue();
     queue.dequeue();
-    expect(!!queue.stack1.storage[0]).toEqual(false);
-    expect(!!queue.stack1.storage[1]).toEqual(false);
-    expect(!!queue.stack1.storage[2]).toEqual(false);
+    expect(queue.stack1.peek()).toEqual(null);
   });
 
   it('Can successfully instantiate an empty queue', () => {
     queue = new PseudoQueue();
-    expect(!!queue.stack1.storage[0]).toEqual(false);
+    expect(queue.stack1.peek()).toEqual(null);
   });
 });
