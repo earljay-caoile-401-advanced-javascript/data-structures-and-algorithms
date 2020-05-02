@@ -1,5 +1,5 @@
 const BreadthFirstBinaryTree = require('./breadth-first.js');
-const { Node } = require('../../../data-structures/trees/tree.js');
+const Node = require('../../../data-structures/trees/node.js');
 
 describe('BreadthFirstBinaryTree', () => {
   let breadthFirstBTree;
