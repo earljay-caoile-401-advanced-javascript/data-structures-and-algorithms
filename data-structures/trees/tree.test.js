@@ -13,11 +13,6 @@ describe('binary search tree', () => {
     binarySearchTree.add(7);
   };
 
-  // const silenceLogs = () => {
-  //   jest.spyOn(global.console, 'log');
-  //   console.log = jest.fn();
-  // };
-
   beforeEach(() => {
     binarySearchTree = new BinarySearchTree();
   });
