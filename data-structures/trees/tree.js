@@ -65,38 +65,33 @@ class BinarySearchTree extends BinaryTree {
   }
 
   add(val) {
-    const node = new Node(val);
+    const newNode = new Node(val);
 
     if (!this.root) {
-      this.root = node;
+      this.root = newNode;
       return;
     }
 
-    const queue = [];
-    queue.push(this.root);
+    addHelper(this.root);
 
-    while (queue.length) {
-      const front = queue.shift();
-
-      if (val === front.val) {
+    function addHelper(node) {
+      if (val === node.val) {
         return;
       }
 
-      if (val < front.val) {
-        if (front.left) {
-          queue.push(front.left);
+      if (val > node.val) {
+        if (node.right) {
+          addHelper(node.right);
         } else {
-          front.left = node;
-          return;
+          node.right = newNode;
         }
       }
 
-      if (val > front.val) {
-        if (front.right) {
-          queue.push(front.right);
+      if (val < node.val) {
+        if (node.left) {
+          addHelper(node.left);
         } else {
-          front.right = node;
-          return;
+          node.left = newNode;
         }
       }
     }
@@ -107,25 +102,25 @@ class BinarySearchTree extends BinaryTree {
       return false;
     }
 
-    return this.searchHelper(this.root, val);
-  }
+    return searchHelper(this.root);
 
-  searchHelper(node, val) {
-    if (node) {
-      if (val === node.val) {
-        return true;
+    function searchHelper(node) {
+      if (node) {
+        if (val === node.val) {
+          return true;
+        }
+
+        if (val < node.val) {
+          return searchHelper(node.left);
+        }
+
+        if (val > node.val) {
+          return searchHelper(node.right);
+        }
       }
 
-      if (val < node.val) {
-        return this.searchHelper(node.left, val);
-      }
-
-      if (val > node.val) {
-        return this.searchHelper(node.right, val);
-      }
+      return false;
     }
-
-    return false;
   }
 }
 
