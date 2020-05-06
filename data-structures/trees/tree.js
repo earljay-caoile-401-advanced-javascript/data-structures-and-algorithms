@@ -8,54 +8,57 @@ class BinaryTree {
   }
 
   // root, left, right traversal
-  preOrder(node) {
-    if (!node) {
-      return;
+  preOrder() {
+    const res = [];
+
+    function preHelper(node) {
+      if (!node) {
+        return;
+      }
+
+      res.push(node.val);
+      preHelper(node.left);
+      preHelper(node.right);
     }
 
-    console.log(node.val);
-
-    if (node.left) {
-      this.preOrder(node.left);
-    }
-
-    if (node.right) {
-      this.preOrder(node.right);
-    }
+    preHelper(this.root);
+    return res;
   }
 
   // left, root, right traversal
-  inOrder(node) {
-    if (!node) {
-      return;
+  inOrder() {
+    const res = [];
+
+    function inHelper(node) {
+      if (!node) {
+        return;
+      }
+
+      inHelper(node.left);
+      res.push(node.val);
+      inHelper(node.right);
     }
 
-    if (node.left) {
-      this.inOrder(node.left);
-    }
-
-    console.log(node.val);
-
-    if (node.right) {
-      this.inOrder(node.right);
-    }
+    inHelper(this.root);
+    return res;
   }
 
   // left, right, root traversal
-  postOrder(node) {
-    if (!node) {
-      return;
+  postOrder() {
+    const res = [];
+
+    function postHelper(node) {
+      if (!node) {
+        return;
+      }
+
+      postHelper(node.left);
+      postHelper(node.right);
+      res.push(node.val);
     }
 
-    if (node.left) {
-      this.postOrder(node.left);
-    }
-
-    if (node.right) {
-      this.postOrder(node.right);
-    }
-
-    console.log(node.val);
+    postHelper(this.root);
+    return res;
   }
 }
 

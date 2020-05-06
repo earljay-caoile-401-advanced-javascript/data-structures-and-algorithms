@@ -13,10 +13,10 @@ describe('binary search tree', () => {
     binarySearchTree.add(7);
   };
 
-  const silenceLogs = () => {
-    jest.spyOn(global.console, 'log');
-    console.log = jest.fn();
-  };
+  // const silenceLogs = () => {
+  //   jest.spyOn(global.console, 'log');
+  //   console.log = jest.fn();
+  // };
 
   beforeEach(() => {
     binarySearchTree = new BinarySearchTree();
@@ -64,35 +64,23 @@ describe('binary search tree', () => {
   });
 
   it('can perform a pre-order traversal', () => {
-    silenceLogs();
-    binarySearchTree.preOrder(binarySearchTree.root);
-    expect(console.log).not.toHaveBeenCalled();
+    expect(binarySearchTree.preOrder()).toEqual([]);
 
     addSomeNodes();
-    binarySearchTree.preOrder(binarySearchTree.root);
-    expect(console.log).toHaveBeenCalled();
-    jest.clearAllMocks();
+    expect(binarySearchTree.preOrder()).toEqual([4, 3, 2, 5, 8, 7]);
   });
 
   it('can perform an in-order traversal', () => {
-    silenceLogs();
-    binarySearchTree.inOrder(binarySearchTree.root);
-    expect(console.log).not.toHaveBeenCalled();
+    expect(binarySearchTree.inOrder()).toEqual([]);
 
     addSomeNodes();
-    binarySearchTree.inOrder(binarySearchTree.root);
-    expect(console.log).toHaveBeenCalled();
-    jest.clearAllMocks();
+    expect(binarySearchTree.inOrder()).toEqual([2, 3, 4, 5, 7, 8]);
   });
 
   it('can perform a post-order traversal', () => {
-    silenceLogs();
-    binarySearchTree.postOrder(binarySearchTree.root);
-    expect(console.log).not.toHaveBeenCalled();
+    expect(binarySearchTree.postOrder()).toEqual([]);
 
     addSomeNodes();
-    binarySearchTree.postOrder(binarySearchTree.root);
-    expect(console.log).toHaveBeenCalled();
-    jest.clearAllMocks();
+    expect(binarySearchTree.postOrder()).toEqual([2, 3, 7, 8, 5, 4]);
   });
 });
