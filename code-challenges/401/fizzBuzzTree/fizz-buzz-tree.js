@@ -6,25 +6,25 @@ const fizzBuzzTree = (node) => {
     return null;
   }
 
-  let newRoot;
-
+  let newVal;
   if (typeof node.val === 'number') {
     const canDivByThree = node.val % 3 === 0;
     const canDivByFive = node.val % 5 === 0;
 
     if (canDivByThree && canDivByFive) {
-      newRoot = new Node('FizzBuzz');
+      newVal = 'FizzBuzz';
     } else if (canDivByThree) {
-      newRoot = new Node('Fizz');
+      newVal = 'Fizz';
     } else if (canDivByFive) {
-      newRoot = new Node('Buzz');
+      newVal = 'Buzz';
     } else {
-      newRoot = new Node(node.val.toString());
+      newVal = node.val.toString();
     }
   } else {
-    newRoot = new Node(node.val);
+    newVal = node.val;
   }
 
+  const newRoot = new Node(newVal);
   newRoot.left = fizzBuzzTree(node.left);
   newRoot.right = fizzBuzzTree(node.right);
   return newRoot;
