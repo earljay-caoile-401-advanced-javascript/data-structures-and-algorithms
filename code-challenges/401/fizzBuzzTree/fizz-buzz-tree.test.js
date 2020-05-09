@@ -34,4 +34,10 @@ describe('fizzBuzzTree', () => {
     const fizzRoot = fizzBuzzTree(binaryTree.root);
     expect(fizzRoot).toEqual(null);
   });
+
+  it('can deal with a tree that has non-numbers', () => {
+    binaryTree.root = new Node('not a number');
+    const fizzRoot = fizzBuzzTree(binaryTree.root);
+    expect(fizzRoot.val).toEqual(binaryTree.root.val);
+  });
 });

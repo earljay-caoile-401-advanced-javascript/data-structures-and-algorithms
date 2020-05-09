@@ -7,6 +7,7 @@ const fizzBuzzTree = (node) => {
   }
 
   let newRoot;
+
   if (typeof node.val === 'number') {
     const canDivByThree = node.val % 3 === 0;
     const canDivByFive = node.val % 5 === 0;
@@ -20,6 +21,8 @@ const fizzBuzzTree = (node) => {
     } else {
       newRoot = new Node(node.val.toString());
     }
+  } else {
+    newRoot = new Node(node.val);
   }
 
   newRoot.left = fizzBuzzTree(node.left);
