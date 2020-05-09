@@ -80,6 +80,7 @@ class BinarySearchTree extends BinaryTree {
           addHelper(node.right);
         } else {
           node.right = newNode;
+          return;
         }
       }
 
@@ -88,6 +89,7 @@ class BinarySearchTree extends BinaryTree {
           addHelper(node.left);
         } else {
           node.left = newNode;
+          return;
         }
       }
     }
