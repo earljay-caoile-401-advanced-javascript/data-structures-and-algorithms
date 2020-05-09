@@ -9,20 +9,15 @@ class BinaryTree {
 
   // root, left, right traversal
   preOrder() {
-    const res = [];
-
     function preHelper(node) {
       if (!node) {
-        return;
+        return [];
       }
 
-      res.push(node.val);
-      preHelper(node.left);
-      preHelper(node.right);
+      return [node.val, ...preHelper(node.left), ...preHelper(node.right)];
     }
 
-    preHelper(this.root);
-    return res;
+    return preHelper(this.root);
   }
 
   // left, root, right traversal
@@ -45,20 +40,18 @@ class BinaryTree {
 
   // left, right, root traversal
   postOrder() {
-    const res = [];
-
-    function postHelper(node) {
+    function postHelper(node, res) {
       if (!node) {
-        return;
+        return res;
       }
 
-      postHelper(node.left);
-      postHelper(node.right);
+      postHelper(node.left, res);
+      postHelper(node.right, res);
       res.push(node.val);
+      return res;
     }
 
-    postHelper(this.root);
-    return res;
+    return postHelper(this.root, []);
   }
 }
 
