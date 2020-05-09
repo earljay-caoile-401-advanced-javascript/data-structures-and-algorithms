@@ -25,7 +25,8 @@ const fizzBuzzHelper = (node) => {
       }
     }
 
-    fizzBuzzHelper(node.left) || fizzBuzzHelper(node.right);
+    fizzBuzzHelper(node.left);
+    fizzBuzzHelper(node.right);
   }
 };
 
