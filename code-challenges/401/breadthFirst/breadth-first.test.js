@@ -39,4 +39,16 @@ describe('BreadthFirstBinaryTree', () => {
     const expectedRes = [4, 3, 2, 1];
     expect(breadthFirstBTree.breadthFirst()).toEqual(expectedRes);
   });
+
+  it('can return an array for a binary tree with values on very opposite sides', () => {
+    breadthFirstBTree.root = new Node(4);
+    breadthFirstBTree.root.left = new Node(3);
+    breadthFirstBTree.root.right = new Node(8);
+    breadthFirstBTree.root.left.left = new Node(2);
+    breadthFirstBTree.root.right.right = new Node(9);
+    breadthFirstBTree.root.left.left.left = new Node(1);
+
+    const expectedRes = [4, 3, 8, 2, 9, 1];
+    expect(breadthFirstBTree.breadthFirst()).toEqual(expectedRes);
+  });
 });
