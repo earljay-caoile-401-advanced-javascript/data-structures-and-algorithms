@@ -20,3 +20,4 @@ Data structures and algorithms repo for Code Fellows JavaScript 401 course
 12. [Trees Implementation](/data-structures/trees/README.md)
 13. [FizzBuzz Tree](/code-challenges/401/fizzBuzzTree/README.md)
 14. [Breadth-First Traversal](/code-challenges/401/breadthFirst/README.md)
+15. [Find Maximum Binary Tree](/code-challenges/401/findMaximumBinaryTree/README.md)

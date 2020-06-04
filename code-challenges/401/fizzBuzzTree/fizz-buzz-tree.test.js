@@ -19,19 +19,25 @@ describe('fizzBuzzTree', () => {
     binaryTree.root.left.left = new Node(1);
     binaryTree.root.left.left.right = new Node(9);
     binaryTree.root.left.right = new Node(2);
-    fizzBuzzTree(binaryTree);
+    const fizzRoot = fizzBuzzTree(binaryTree.root);
 
-    expect(binaryTree.root.val).toEqual('Buzz');
-    expect(binaryTree.root.left.val).toEqual('Fizz');
-    expect(binaryTree.root.right.val).toEqual('FizzBuzz');
-    expect(binaryTree.root.right.right.val).toEqual('Fizz');
-    expect(binaryTree.root.left.left.val).toEqual('1');
-    expect(binaryTree.root.left.left.right.val).toEqual('Fizz');
-    expect(binaryTree.root.left.right.val).toEqual('2');
+    expect(fizzRoot.val).toEqual('Buzz');
+    expect(fizzRoot.left.val).toEqual('Fizz');
+    expect(fizzRoot.right.val).toEqual('FizzBuzz');
+    expect(fizzRoot.right.right.val).toEqual('Fizz');
+    expect(fizzRoot.left.left.val).toEqual('1');
+    expect(fizzRoot.left.left.right.val).toEqual('Fizz');
+    expect(fizzRoot.left.right.val).toEqual('2');
   });
 
   it('can handle an empty binary tree', () => {
-    fizzBuzzTree(binaryTree);
-    expect(binaryTree.root).toEqual(null);
+    const fizzRoot = fizzBuzzTree(binaryTree.root);
+    expect(fizzRoot).toEqual(null);
+  });
+
+  it('can deal with a tree that has non-numbers', () => {
+    binaryTree.root = new Node('not a number');
+    const fizzRoot = fizzBuzzTree(binaryTree.root);
+    expect(fizzRoot.val).toEqual(binaryTree.root.val);
   });
 });

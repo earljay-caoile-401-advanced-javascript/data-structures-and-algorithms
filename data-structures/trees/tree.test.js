@@ -9,11 +9,8 @@ describe('binary search tree', () => {
     binarySearchTree.add(3);
     binarySearchTree.add(5);
     binarySearchTree.add(2);
-  };
-
-  const silenceLogs = () => {
-    jest.spyOn(global.console, 'log');
-    console.log = jest.fn();
+    binarySearchTree.add(8);
+    binarySearchTree.add(7);
   };
 
   beforeEach(() => {
@@ -26,6 +23,14 @@ describe('binary search tree', () => {
     expect(binarySearchTree.root.left.val).toEqual(3);
     expect(binarySearchTree.root.left.left.val).toEqual(2);
     expect(binarySearchTree.root.right.val).toEqual(5);
+    expect(binarySearchTree.root.right.right.val).toEqual(8);
+    expect(binarySearchTree.root.right.right.left.val).toEqual(7);
+  });
+
+  it('can handle returning out when adding an existing value to a binary search tree', () => {
+    addSomeNodes();
+    binarySearchTree.add(4);
+    expect(binarySearchTree.root.val).toEqual(4);
   });
 
   it('can look at a BST to see if it contains a given value', () => {
@@ -35,46 +40,42 @@ describe('binary search tree', () => {
     binarySearchTree.add(26);
     binarySearchTree.add(13);
     binarySearchTree.add(78);
+    binarySearchTree.add(111);
 
     expect(binarySearchTree.contains(3)).toEqual(false);
     expect(binarySearchTree.contains(4)).toEqual(false);
     expect(binarySearchTree.contains(5)).toEqual(false);
+    expect(binarySearchTree.contains(123)).toEqual(false);
     expect(binarySearchTree.contains(55)).toEqual(true);
     expect(binarySearchTree.contains(26)).toEqual(true);
     expect(binarySearchTree.contains(13)).toEqual(true);
     expect(binarySearchTree.contains(78)).toEqual(true);
+    expect(binarySearchTree.contains(111)).toEqual(true);
+  });
+
+  it('can initialize a binary search tree with a value', () => {
+    const datTree = new BinarySearchTree(3);
+    expect(datTree.root.val).toEqual(3);
   });
 
   it('can perform a pre-order traversal', () => {
-    silenceLogs();
-    binarySearchTree.preOrder(binarySearchTree.root);
-    expect(console.log).not.toHaveBeenCalled();
+    expect(binarySearchTree.preOrder()).toEqual([]);
 
     addSomeNodes();
-    binarySearchTree.preOrder(binarySearchTree.root);
-    expect(console.log).toHaveBeenCalled();
-    jest.clearAllMocks();
+    expect(binarySearchTree.preOrder()).toEqual([4, 3, 2, 5, 8, 7]);
   });
 
   it('can perform an in-order traversal', () => {
-    silenceLogs();
-    binarySearchTree.inOrder(binarySearchTree.root);
-    expect(console.log).not.toHaveBeenCalled();
+    expect(binarySearchTree.inOrder()).toEqual([]);
 
     addSomeNodes();
-    binarySearchTree.inOrder(binarySearchTree.root);
-    expect(console.log).toHaveBeenCalled();
-    jest.clearAllMocks();
+    expect(binarySearchTree.inOrder()).toEqual([2, 3, 4, 5, 7, 8]);
   });
 
   it('can perform a post-order traversal', () => {
-    silenceLogs();
-    binarySearchTree.postOrder(binarySearchTree.root);
-    expect(console.log).not.toHaveBeenCalled();
+    expect(binarySearchTree.postOrder()).toEqual([]);
 
     addSomeNodes();
-    binarySearchTree.postOrder(binarySearchTree.root);
-    expect(console.log).toHaveBeenCalled();
-    jest.clearAllMocks();
+    expect(binarySearchTree.postOrder()).toEqual([2, 3, 7, 8, 5, 4]);
   });
 });

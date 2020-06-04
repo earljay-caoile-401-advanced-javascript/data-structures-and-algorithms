@@ -8,54 +8,50 @@ class BinaryTree {
   }
 
   // root, left, right traversal
-  preOrder(node) {
-    if (!node) {
-      return;
+  preOrder() {
+    function preHelper(node) {
+      if (!node) {
+        return [];
+      }
+
+      return [node.val, ...preHelper(node.left), ...preHelper(node.right)];
     }
 
-    console.log(node.val);
-
-    if (node.left) {
-      this.preOrder(node.left);
-    }
-
-    if (node.right) {
-      this.preOrder(node.right);
-    }
+    return preHelper(this.root);
   }
 
   // left, root, right traversal
-  inOrder(node) {
-    if (!node) {
-      return;
+  inOrder() {
+    const res = [];
+
+    function inHelper(node) {
+      if (!node) {
+        return;
+      }
+
+      inHelper(node.left);
+      res.push(node.val);
+      inHelper(node.right);
     }
 
-    if (node.left) {
-      this.inOrder(node.left);
-    }
-
-    console.log(node.val);
-
-    if (node.right) {
-      this.inOrder(node.right);
-    }
+    inHelper(this.root);
+    return res;
   }
 
   // left, right, root traversal
-  postOrder(node) {
-    if (!node) {
-      return;
+  postOrder() {
+    function postHelper(node, res) {
+      if (!node) {
+        return res;
+      }
+
+      postHelper(node.left, res);
+      postHelper(node.right, res);
+      res.push(node.val);
+      return res;
     }
 
-    if (node.left) {
-      this.postOrder(node.left);
-    }
-
-    if (node.right) {
-      this.postOrder(node.right);
-    }
-
-    console.log(node.val);
+    return postHelper(this.root, []);
   }
 }
 
@@ -65,37 +61,34 @@ class BinarySearchTree extends BinaryTree {
   }
 
   add(val) {
-    const node = new Node(val);
+    const newNode = new Node(val);
 
     if (!this.root) {
-      this.root = node;
+      this.root = newNode;
       return;
     }
 
-    const queue = [];
-    queue.push(this.root);
+    addHelper(this.root);
 
-    while (queue.length) {
-      const front = queue.shift();
-
-      if (val === front.val) {
+    function addHelper(node) {
+      if (val === node.val) {
         return;
       }
 
-      if (val < front.val) {
-        if (front.left) {
-          queue.push(front.left);
+      if (val > node.val) {
+        if (node.right) {
+          addHelper(node.right);
         } else {
-          front.left = node;
+          node.right = newNode;
           return;
         }
       }
 
-      if (val > front.val) {
-        if (front.right) {
-          queue.push(front.right);
+      if (val < node.val) {
+        if (node.left) {
+          addHelper(node.left);
         } else {
-          front.right = node;
+          node.left = newNode;
           return;
         }
       }
@@ -107,25 +100,25 @@ class BinarySearchTree extends BinaryTree {
       return false;
     }
 
-    return this.searchHelper(this.root, val);
-  }
+    return searchHelper(this.root);
 
-  searchHelper(node, val) {
-    if (node) {
-      if (val === node.val) {
-        return true;
+    function searchHelper(node) {
+      if (node) {
+        if (val === node.val) {
+          return true;
+        }
+
+        if (val < node.val) {
+          return searchHelper(node.left);
+        }
+
+        if (val > node.val) {
+          return searchHelper(node.right);
+        }
       }
 
-      if (val < node.val) {
-        return this.searchHelper(node.left, val);
-      }
-
-      if (val > node.val) {
-        return this.searchHelper(node.right, val);
-      }
+      return false;
     }
-
-    return false;
   }
 }
 

@@ -1,3 +1,5 @@
+'use strict';
+
 const { BinaryTree } = require('../../../data-structures/trees/tree.js');
 const Queue = require('../../../data-structures/stackAndQueue/queue.js');
 
