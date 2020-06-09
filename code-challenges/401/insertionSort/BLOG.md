@@ -21,8 +21,9 @@ Insertion sort is a sorting algorithm the existing array one item at a time. It 
 
 ## Walkthrough
 
-![Find Max Binary Tree](../../../assets/insertion-sort-blog.jpg)
+![Insertion Sort](../../../assets/insertion-sort-blog.jpg)
 
 ## Efficiency
+
 - Time: O(n^2)
 - Space: O(1)
