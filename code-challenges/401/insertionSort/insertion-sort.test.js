@@ -26,4 +26,20 @@ describe('insertion sort', () => {
 
     expect(nearlySortedArr).toEqual([2, 3, 5, 7, 11, 13]);
   });
+
+  it('can accept a blank array', () => {
+    const blankArr = [];
+    
+    insertionSort(blankArr);
+
+    expect(blankArr).toEqual([]);
+  });
+
+  it('can accept a single element array', () => {
+    const singleArr = [1];
+    
+    insertionSort(singleArr);
+
+    expect(singleArr).toEqual([1]);
+  });
 });
