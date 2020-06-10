@@ -30,18 +30,16 @@ const mergeSort = (arr) => {
       k++;
     }
 
-    if (i === left.length) {
-      while (j < right.length) {
-        arr[k] = right[j];
-        j++;
-        k++;
-      }
-    } else {
-      while (i < left.length) {
-        arr[k] = left[i];
-        i++;
-        k++;
-      }
+    while (i < left.length) {
+      arr[k] = left[i];
+      i++;
+      k++;
+    }
+
+    while (j < right.length) {
+      arr[k] = right[j];
+      j++;
+      k++;
     }
   }
 };
