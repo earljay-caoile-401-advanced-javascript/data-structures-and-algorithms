@@ -22,3 +22,4 @@ Data structures and algorithms repo for Code Fellows JavaScript 401 course
 14. [Breadth-First Traversal](/code-challenges/401/breadthFirst/README.md)
 15. [Find Maximum Binary Tree](/code-challenges/401/findMaximumBinaryTree/README.md)
 16. [Insertion Sort](/code-challenges/401/insertionSort/README.md)
+17. [Merge Sort](/code-challenges/401/mergeSort/README.md)
