@@ -24,4 +24,4 @@ Implement quick sort
 
 ## Solution
 
-![Insertion Sort](../../../assets/quick-sort.jpg)
+![Quick Sort](../../../assets/quick-sort.jpg)

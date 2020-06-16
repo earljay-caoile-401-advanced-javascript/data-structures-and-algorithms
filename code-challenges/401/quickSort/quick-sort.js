@@ -15,7 +15,6 @@ const quickHelper = (arr, left, right) => {
 
 const partition = (arr, left, right) => {
   const pivot = arr[right];
-
   let low = left - 1;
 
   for (let i = left; i < right; i++) {
