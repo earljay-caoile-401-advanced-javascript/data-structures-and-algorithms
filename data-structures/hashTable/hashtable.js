@@ -3,7 +3,7 @@ const LinkedList = require('./linkedList.js');
 
 class Hashtable {
   constructor() {
-    this.hashArr = [];
+    this.hashArr = new Array(1234);
   }
 
 
@@ -11,13 +11,20 @@ class Hashtable {
     let hashIndex;
     switch (typeof key) {
     case 'number':
-      hashIndex = key * 1234;
+      hashIndex = key * 555 % this.hashArr.length;
       break;
     case 'string':
       hashIndex = this.convertString(key);
       break;
     default:
       hashIndex = 0;
+      if (Array.isArray(key)) {
+        hashIndex = key.length % this.hashArr.length;
+      }
+
+      if (this.hashArr[hashIndex] === undefined) {
+        this.hashArr[hashIndex] = new LinkedList();
+      }
       break;
     }
 
@@ -31,24 +38,28 @@ class Hashtable {
       currVal += word.charCodeAt(i);
     }
 
-    return currVal;
+    return currVal % this.hashArr.length;
   }
 
   add(key, val) {
     const hashIndex = this.hash(key);
 
-    if (this.hashArr[hashIndex] === null) {
-      this.hashArr[hashIndex] = new LinkedList(key, val);
+    if (this.hashArr[hashIndex]) {
+      this.hashArr[hashIndex].append(key, val);
     } else {
-      console.log('collision detected');
-      this.hashArr[hashIndex].insert(key, val);
+      this.hashArr[hashIndex] = new LinkedList(key, val);
     }
 
   }
 
   get(key) {
     const hashIndex = this.hash(key);
-    return this.hashArr[hashIndex] === null ? null : this.hashArr[hashIndex].findPair(key).val;
+    if (this.hashArr[hashIndex] === undefined) {
+      return null;
+    } else {
+      const pair = this.hashArr[hashIndex].findPair(key);
+      return pair ? pair.val : null;
+    }
   }
 
   contains(key) {
