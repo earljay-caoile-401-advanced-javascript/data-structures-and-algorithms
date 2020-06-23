@@ -6,7 +6,7 @@ describe('hashtable', () => {
     expect(table).toBeDefined();
     expect(table.hashArr).toMatchObject(new Array(1234));
   });
-  
+
   it('can add a key value pair to table and find it later', () => {
     const table = new Hashtable();
     table.add('mouse', 'cheese');
@@ -57,6 +57,7 @@ describe('hashtable', () => {
     const table = new Hashtable();
     table.add('eggs', 123);
     table.add(777, 'lucky');
+
     expect(table.contains('eggs')).toBe(true);
     expect(table.contains('segg')).toBe(false);
     expect(table.contains('bob')).toBe(false);

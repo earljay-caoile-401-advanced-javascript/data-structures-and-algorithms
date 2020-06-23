@@ -26,7 +26,7 @@ class LinkedList {
         current.val = val;
         return;
       }
-      
+
       current = current.next;
     }
 
@@ -36,7 +36,10 @@ class LinkedList {
   findPair(key) {
     let current = this.head;
     while (current) {
-      if (current.key === key || JSON.stringify(current.key) === JSON.stringify(key)) {
+      if (
+        current.key === key ||
+        JSON.stringify(current.key) === JSON.stringify(key)
+      ) {
         return current;
       }
       current = current.next;
