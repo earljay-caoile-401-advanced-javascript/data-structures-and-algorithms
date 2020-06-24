@@ -2,9 +2,9 @@ const Hashtable = require('./hashtable.js');
 
 describe('hashtable', () => {
   it('can initialize a hashtable object with an empty array', () => {
-    const table = new Hashtable();
+    const table = new Hashtable(555);
     expect(table).toBeDefined();
-    expect(table.hashArr).toMatchObject(new Array(1234));
+    expect(table.hashArr).toMatchObject(new Array(555));
   });
 
   it('can add a key value pair to table and find it later', () => {
@@ -23,7 +23,7 @@ describe('hashtable', () => {
   });
 
   it('can handle collisions and still find key value pairs', () => {
-    const table = new Hashtable();
+    const table = new Hashtable(420);
     table.add('asdf', 'first');
     table.add('fdas', 'second');
     table.add('sdfa', 'third');
@@ -43,7 +43,7 @@ describe('hashtable', () => {
   });
 
   it('can find value for an already existing key', () => {
-    const table = new Hashtable();
+    const table = new Hashtable(420);
     table.add('asdf', 'first');
     table.add('asdf', 'second');
 
@@ -54,13 +54,13 @@ describe('hashtable', () => {
   });
 
   it('can return whether the table contains a key', () => {
-    const table = new Hashtable();
+    const table = new Hashtable(360);
     table.add('eggs', 123);
     table.add(777, 'lucky');
 
     expect(table.contains('eggs')).toBe(true);
     expect(table.contains('segg')).toBe(false);
-    expect(table.contains('bob')).toBe(false);
+    expect(table.contains('hashbrowns')).toBe(false);
     expect(table.contains(777)).toBe(true);
   });
 });

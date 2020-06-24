@@ -2,8 +2,11 @@
 const LinkedList = require('./linkedList.js');
 
 class Hashtable {
-  constructor() {
-    this.hashArr = new Array(1234);
+  constructor(length) {
+    this.hashArr =
+      length === undefined
+        ? new Array((1234 * Math.random()) >>> 1)
+        : new Array(length);
   }
 
   hash(key) {
