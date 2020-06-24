@@ -7,7 +7,15 @@ const repeatedWord = (input) => {
   }
 
   /* eslint-disable quotes */
-  const splitSet = new Set(['.', '!', '?', '/', '"', "'", ' ', ',']);
+  const splitTable = new Hashtable(50);
+  splitTable.add('.', 'yes');
+  splitTable.add('!', 'yes');
+  splitTable.add('?', 'yes');
+  splitTable.add('/', 'yes');
+  splitTable.add('"', 'yes');
+  splitTable.add("'", 'yes');
+  splitTable.add(' ', 'yes');
+  splitTable.add(',', 'yes');
   /* eslint-enable quotes */
 
   const hTable = new Hashtable(555);
@@ -15,16 +23,15 @@ const repeatedWord = (input) => {
   let currWord = '';
 
   for (const c of input) {
-    if (splitSet.has(c)) {
+    if (splitTable.contains(c)) {
       if (hTable.get(currWord)) {
         return currWord;
       }
 
       if (currWord) {
         hTable.add(currWord.toLowerCase(), 1);
+        currWord = '';
       }
-
-      currWord = '';
     } else {
       currWord += c;
     }
