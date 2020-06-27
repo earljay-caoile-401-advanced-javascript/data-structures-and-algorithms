@@ -24,4 +24,5 @@ Data structures and algorithms repo for Code Fellows JavaScript 401 course
 16. [Insertion Sort](/code-challenges/401/insertionSort/README.md)
 17. [Merge Sort](/code-challenges/401/mergeSort/README.md)
 18. [Quick Sort](/code-challenges/401/quickSort/README.md)
-19. [Hash Tables](/data-structures/hashTable/README.md)
+19. [Hash Table Implementation](/data-structures/hashTable/README.md)
+20. [First Repeated Word](/code-challenges/401/repeatedWord/README.md)
