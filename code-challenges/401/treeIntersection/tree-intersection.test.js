@@ -49,4 +49,16 @@ describe('tree insterection function', () => {
     expect(treeIntersection(null, root1)).toMatchObject([]);
     expect(treeIntersection(null, null)).toMatchObject([]);
   });
+
+  it('can return all nodes if trees are identical', () => {
+    const root1 = new Node(3);
+    root1.left = new Node(1);
+    root1.right = new Node(8);
+
+    const root2 = new Node(3);
+    root2.left = new Node(1);
+    root2.right = new Node(8);
+
+    expect(treeIntersection(root1, root2)).toMatchObject([3, 1, 8]);
+  });
 });
