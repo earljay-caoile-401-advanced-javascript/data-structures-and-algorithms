@@ -7,6 +7,7 @@ class Hashtable {
       length === undefined
         ? new Array((1234 * Math.random()) >>> 1)
         : new Array(length);
+    this.keyArr = [];
   }
 
   hash(key) {
@@ -46,7 +47,7 @@ class Hashtable {
 
   add(key, val) {
     const hashIndex = this.hash(key);
-
+    this.keyArr.push(key);
     if (this.hashArr[hashIndex]) {
       this.hashArr[hashIndex].append(key, val);
     } else {
@@ -66,6 +67,10 @@ class Hashtable {
 
   contains(key) {
     return this.get(key) !== null;
+  }
+
+  keys() {
+    return this.keyArr;
   }
 }
 
