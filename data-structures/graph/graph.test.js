@@ -1,3 +1,5 @@
+'use strict';
+
 const Graph = require('./graph.js');
 
 describe('graph', () => {
@@ -16,10 +18,11 @@ describe('graph', () => {
     expect(testGraph.vertices.includes(secondNode)).toBeTruthy();
   });
 
-  it('can add edges', () => {
+  it('can add edges with or without weights', () => {
     const testGraph = new Graph();
     const firstNode = testGraph.addNode('A');
     const secondNode = testGraph.addNode('B');
+    const thirdNode = testGraph.addNode('C');
 
     testGraph.addEdge(firstNode, secondNode, 7);
 
@@ -30,6 +33,16 @@ describe('graph', () => {
     expect(secondNode.neighbors[0]).toMatchObject({
       node: firstNode,
       weight: 7,
+    });
+
+    testGraph.addEdge(firstNode, thirdNode);
+    expect(firstNode.neighbors[1]).toMatchObject({
+      node: thirdNode,
+      weight: null,
+    });
+    expect(thirdNode.neighbors[0]).toMatchObject({
+      node: firstNode,
+      weight: null,
     });
   });
 
