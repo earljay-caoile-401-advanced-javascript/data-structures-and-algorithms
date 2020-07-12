@@ -28,3 +28,4 @@ Data structures and algorithms repo for Code Fellows JavaScript 401 course
 20. [First Repeated Word](/code-challenges/401/repeatedWord/README.md)
 21. [Tree Intersection](/code-challenges/401/treeIntersection/README.md)
 22. [Left Join](/code-challenges/401/leftJoin/README.md)
+23. [Graph Implementation](/data-structures/graph/README.md)
