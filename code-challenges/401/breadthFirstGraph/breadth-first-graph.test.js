@@ -1,6 +1,5 @@
 'use strict';
 
-const BreadthFirstGraph = require('./breadth-first-graph.js');
 const BreadtFirstGraph = require('./breadth-first-graph.js');
 
 describe('breadth first graph', () => {
@@ -22,8 +21,6 @@ describe('breadth first graph', () => {
   });
 
   it('can perform breadth first search', () => {
-    const testGraph = new BreadthFirstGraph();
-
     const firstNode = testGraph.addNode('A');
     const secondNode = testGraph.addNode('B');
     const thirdNode = testGraph.addNode('C');
@@ -51,7 +48,6 @@ describe('breadth first graph', () => {
   });
 
   it('can perform breadth first on the exmaple graph', () => {
-    const testGraph = new BreadthFirstGraph();
     const firstNode = testGraph.addNode('Pandora');
     const secondNode = testGraph.addNode('Arendelle');
     const thirdNode = testGraph.addNode('Metroville');
@@ -76,5 +72,30 @@ describe('breadth first graph', () => {
       fifthNode,
       sixthNode,
     ]);
+  });
+
+  it('can verify whether a path exists between two nodes (stretch goal)', () => {
+    const firstNode = testGraph.addNode('Pandora');
+    const secondNode = testGraph.addNode('Arendelle');
+    const thirdNode = testGraph.addNode('Metroville');
+    const fourthNode = testGraph.addNode('Monstroplolis');
+    const fifthNode = testGraph.addNode('Narnia');
+    const sixthNode = testGraph.addNode('Naboo');
+
+    testGraph.addEdge(firstNode, secondNode);
+    testGraph.addEdge(secondNode, thirdNode);
+    testGraph.addEdge(secondNode, fourthNode);
+    testGraph.addEdge(thirdNode, fourthNode);
+    testGraph.addEdge(thirdNode, fifthNode);
+    testGraph.addEdge(thirdNode, sixthNode);
+    testGraph.addEdge(fourthNode, sixthNode);
+
+    expect(testGraph.doesPathExist()).toBe(false);
+    expect(testGraph.doesPathExist(secondNode)).toBe(false);
+
+    expect(testGraph.doesPathExist(firstNode, sixthNode)).toBe(true);
+
+    const dummyNode = testGraph.addNode('Dummy');
+    expect(testGraph.doesPathExist(firstNode, dummyNode)).toBe(false);
   });
 });

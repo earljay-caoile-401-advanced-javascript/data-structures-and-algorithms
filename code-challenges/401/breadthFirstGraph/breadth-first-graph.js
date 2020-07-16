@@ -8,6 +8,12 @@ class BreadtFirstGraph extends Graph {
     super();
   }
 
+  resetVisited(nodesArr) {
+    for (let i = 0; i < nodesArr.length; i++) {
+      nodesArr[i].visited = false;
+    }
+  }
+
   breadthFirst(rootNode) {
     const order = [];
 
@@ -32,11 +38,41 @@ class BreadtFirstGraph extends Graph {
       }
     }
 
-    for (let i = 0; i < order.length; i++) {
-      order[i].visited = false;
+    this.resetVisited(order);
+    return order;
+  }
+
+  doesPathExist(node1, node2) {
+    if (!node1 || !node2) {
+      return false;
     }
 
-    return order;
+    const order = [];
+
+    const breadth = new Queue();
+
+    node1.visited = true;
+    breadth.enqueue(node1);
+
+    while (breadth.peek()) {
+      const front = breadth.dequeue();
+      order.push(front);
+      for (const nodeObj of Object.values(front.neighbors)) {
+        const neighborNode = nodeObj.node;
+        if (neighborNode === node2) {
+          this.resetVisited(order);
+          return true;
+        }
+
+        if (!neighborNode.visited) {
+          neighborNode.visited = true;
+          breadth.enqueue(neighborNode);
+        }
+      }
+    }
+
+    this.resetVisited(order);
+    return false;
   }
 }
 
