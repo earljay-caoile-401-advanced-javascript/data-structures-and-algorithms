@@ -27,10 +27,20 @@ Implement your own Graph. The graph should be represented as an adjacency list, 
 
 ## Approach & Efficiency
 
+### Approach
+
 - create graph class that initializes with an empty array to store vertices
 - for every value added to graph, create a node and add it to the vertices array
 - each node will contain a value, neighbors array, and a visited boolean flag
 - for every edge, add to the neighbors neighbors array with an object containing the node and an optional weight
+
+### Efficiency
+
+- **addNode(val)**: O(1)
+- **addEdge(firstNode, secondNode, weight)**: O(1)
+- **getNeighbors(node)**: O(N)
+- **getNodes()**: O(N)
+- **size()**: O(1)
 
 ## API
 

@@ -1,8 +1,26 @@
 'use strict';
 
 const BreadthFirstGraph = require('./breadth-first-graph.js');
+const BreadtFirstGraph = require('./breadth-first-graph.js');
 
 describe('breadth first graph', () => {
+  let testGraph = new BreadtFirstGraph();
+
+  beforeEach(() => {
+    testGraph = new BreadtFirstGraph();
+  });
+
+  it('can return an empty array if no root node is given', () => {
+    const res = testGraph.breadthFirst();
+    expect(res).toMatchObject([]);
+  });
+
+  it('can return a single node for a graph with only one node', () => {
+    const root = testGraph.addNode('A');
+    const res = testGraph.breadthFirst(root);
+    expect(res).toMatchObject([root]);
+  });
+
   it('can perform breadth first search', () => {
     const testGraph = new BreadthFirstGraph();
 
@@ -16,14 +34,20 @@ describe('breadth first graph', () => {
     testGraph.addEdge(firstNode, fourthNode);
 
     const breadthList = testGraph.breadthFirst(firstNode);
-    expect(breadthList[0]).toBe(firstNode);
-    expect(breadthList[1]).toBe(secondNode);
-    expect(breadthList[2]).toBe(thirdNode);
-    expect(breadthList[3]).toBe(fourthNode);
+    expect(breadthList).toMatchObject([
+      firstNode,
+      secondNode,
+      thirdNode,
+      fourthNode,
+    ]);
 
     const secondBreadth = testGraph.breadthFirst(secondNode);
-    expect(secondBreadth[0]).toBe(secondNode);
-    expect(secondBreadth[1]).toBe(firstNode);
+    expect(secondBreadth).toMatchObject([
+      secondNode,
+      firstNode,
+      thirdNode,
+      fourthNode,
+    ]);
   });
 
   it('can perform breadth first on the exmaple graph', () => {
@@ -44,11 +68,13 @@ describe('breadth first graph', () => {
     testGraph.addEdge(fourthNode, sixthNode);
 
     const exampleBreadth = testGraph.breadthFirst(firstNode);
-    expect(exampleBreadth[0]).toBe(firstNode);
-    expect(exampleBreadth[1]).toBe(secondNode);
-    expect(exampleBreadth[2]).toBe(thirdNode);
-    expect(exampleBreadth[3]).toBe(fourthNode);
-    expect(exampleBreadth[4]).toBe(fifthNode);
-    expect(exampleBreadth[5]).toBe(sixthNode);
+    expect(exampleBreadth).toMatchObject([
+      firstNode,
+      secondNode,
+      thirdNode,
+      fourthNode,
+      fifthNode,
+      sixthNode,
+    ]);
   });
 });

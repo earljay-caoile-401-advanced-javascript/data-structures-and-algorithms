@@ -10,6 +10,11 @@ class BreadtFirstGraph extends Graph {
 
   breadthFirst(rootNode) {
     const order = [];
+
+    if (!rootNode) {
+      return order;
+    }
+
     const breadth = new Queue();
 
     rootNode.visited = true;
