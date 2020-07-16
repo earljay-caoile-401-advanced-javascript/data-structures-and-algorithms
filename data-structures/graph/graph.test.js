@@ -26,21 +26,21 @@ describe('graph', () => {
 
     testGraph.addEdge(firstNode, secondNode, 7);
 
-    expect(firstNode.neighbors[0]).toMatchObject({
+    expect(firstNode.neighbors[secondNode.val]).toMatchObject({
       node: secondNode,
       weight: 7,
     });
-    expect(secondNode.neighbors[0]).toMatchObject({
+    expect(secondNode.neighbors[firstNode.val]).toMatchObject({
       node: firstNode,
       weight: 7,
     });
 
     testGraph.addEdge(firstNode, thirdNode);
-    expect(firstNode.neighbors[1]).toMatchObject({
+    expect(firstNode.neighbors[thirdNode.val]).toMatchObject({
       node: thirdNode,
       weight: null,
     });
-    expect(thirdNode.neighbors[0]).toMatchObject({
+    expect(thirdNode.neighbors[firstNode.val]).toMatchObject({
       node: firstNode,
       weight: null,
     });

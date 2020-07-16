@@ -14,8 +14,14 @@ class Graph {
   }
 
   addEdge(firstNode, secondNode, weight) {
-    firstNode.neighbors.push({ node: secondNode, weight: weight || null });
-    secondNode.neighbors.push({ node: firstNode, weight: weight || null });
+    firstNode.neighbors[secondNode.val] = {
+      node: secondNode,
+      weight: weight || null,
+    };
+    secondNode.neighbors[firstNode.val] = {
+      node: firstNode,
+      weight: weight || null,
+    };
   }
 
   getNodes() {
@@ -23,7 +29,7 @@ class Graph {
   }
 
   getNeighbors(node) {
-    return node.neighbors;
+    return Object.values(node.neighbors);
   }
 
   size() {
