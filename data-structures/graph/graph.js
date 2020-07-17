@@ -4,12 +4,12 @@ const Node = require('./node.js');
 
 class Graph {
   constructor() {
-    this.vertices = [];
+    this.vertices = {};
   }
 
   addNode(val) {
     const newNode = new Node(val);
-    this.vertices.push(newNode);
+    this.vertices[val] = newNode;
     return newNode;
   }
 
@@ -25,7 +25,7 @@ class Graph {
   }
 
   getNodes() {
-    return this.vertices;
+    return Object.values(this.vertices);
   }
 
   getNeighbors(node) {
@@ -33,7 +33,7 @@ class Graph {
   }
 
   size() {
-    return this.vertices.length;
+    return Object.values(this.vertices).length;
   }
 }
 
