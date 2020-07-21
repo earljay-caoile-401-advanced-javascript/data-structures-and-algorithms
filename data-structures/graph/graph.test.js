@@ -5,17 +5,17 @@ const Graph = require('./graph.js');
 describe('graph', () => {
   it('can initialize an empty graph', () => {
     const testGraph = new Graph();
-    expect(testGraph.vertices.length).toBe(0);
+    expect(Object.keys(testGraph.vertices).length).toBe(0);
   });
 
   it('can add nodes', () => {
     const testGraph = new Graph();
     const firstNode = testGraph.addNode('A');
-    expect(testGraph.vertices.includes(firstNode)).toBeTruthy();
+    expect(testGraph.vertices[firstNode.val]).toBe(firstNode);
 
     const secondNode = testGraph.addNode('B');
-    expect(testGraph.vertices.includes(firstNode)).toBeTruthy();
-    expect(testGraph.vertices.includes(secondNode)).toBeTruthy();
+    expect(testGraph.vertices[firstNode.val]).toBe(firstNode);
+    expect(testGraph.vertices[secondNode.val]).toBe(secondNode);
   });
 
   it('can add edges with or without weights', () => {
