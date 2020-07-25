@@ -1,3 +1,5 @@
+'use strict';
+
 const depthFirst = require('./depth-first.js');
 const Graph = require('../../../data-structures/graph/graph.js');
 
@@ -22,7 +24,9 @@ describe('depth first function', () => {
     testGraph.addEdge(hNode, fNode);
     testGraph.addEdge(dNode, fNode);
 
-    expect(depthFirst(aNode)).toMatchObject([
+    const res = depthFirst(aNode);
+    expect(res.length).toBe(testGraph.size());
+    expect(res).toMatchObject([
       aNode,
       bNode,
       cNode,

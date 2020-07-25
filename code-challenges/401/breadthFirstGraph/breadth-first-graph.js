@@ -43,7 +43,6 @@ class BreadtFirstGraph extends Graph {
     }
 
     const visited = {};
-
     const breadth = new Queue();
 
     visited[node1.val] = true;
