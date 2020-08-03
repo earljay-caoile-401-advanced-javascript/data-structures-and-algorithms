@@ -4,7 +4,6 @@ class Node {
   constructor(val) {
     this.val = val;
     this.neighbors = {};
-    this.visited = false;
   }
 }
 

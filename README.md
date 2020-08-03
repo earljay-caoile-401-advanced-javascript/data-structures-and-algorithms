@@ -31,3 +31,4 @@ Data structures and algorithms repo for Code Fellows JavaScript 401 course
 23. [Graph Implementation](/data-structures/graph/README.md)
 24. [Graph Breadth First Traversal](/code-challenges/401/breadthFirstGraph/README.md)
 25. [Get Edges](/code-challenges/401/getEdge/README.md)
+26. [Graph Depth First Traversal](/code-challenges/401/depthFirst/README.md)

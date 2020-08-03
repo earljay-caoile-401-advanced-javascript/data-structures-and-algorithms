@@ -8,14 +8,9 @@ class BreadtFirstGraph extends Graph {
     super();
   }
 
-  resetVisited(nodesArr) {
-    for (let i = 0; i < nodesArr.length; i++) {
-      nodesArr[i].visited = false;
-    }
-  }
-
   breadthFirst(rootNode) {
     const order = [];
+    const visited = {};
 
     if (!rootNode) {
       return order;
@@ -23,7 +18,7 @@ class BreadtFirstGraph extends Graph {
 
     const breadth = new Queue();
 
-    rootNode.visited = true;
+    visited[rootNode.val] = true;
     breadth.enqueue(rootNode);
 
     while (breadth.peek()) {
@@ -31,14 +26,14 @@ class BreadtFirstGraph extends Graph {
       order.push(front);
       for (const nodeObj of Object.values(front.neighbors)) {
         const neighborNode = nodeObj.node;
-        if (!neighborNode.visited) {
-          neighborNode.visited = true;
+
+        if (!visited[neighborNode.val]) {
+          visited[neighborNode.val] = true;
           breadth.enqueue(neighborNode);
         }
       }
     }
 
-    this.resetVisited(order);
     return order;
   }
 
@@ -47,31 +42,28 @@ class BreadtFirstGraph extends Graph {
       return false;
     }
 
-    const order = [];
-
+    const visited = {};
     const breadth = new Queue();
 
-    node1.visited = true;
+    visited[node1.val] = true;
     breadth.enqueue(node1);
 
     while (breadth.peek()) {
       const front = breadth.dequeue();
-      order.push(front);
+
       for (const nodeObj of Object.values(front.neighbors)) {
         const neighborNode = nodeObj.node;
         if (neighborNode === node2) {
-          this.resetVisited(order);
           return true;
         }
 
-        if (!neighborNode.visited) {
-          neighborNode.visited = true;
+        if (!visited[neighborNode.val]) {
+          visited[neighborNode.val] = true;
           breadth.enqueue(neighborNode);
         }
       }
     }
 
-    this.resetVisited(order);
     return false;
   }
 }
