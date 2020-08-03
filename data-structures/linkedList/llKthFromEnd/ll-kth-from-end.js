@@ -1,5 +1,5 @@
 'use strict';
-const { LinkedList } = require('../linked-list.js');
+const { LinkedList, Node } = require('../linked-list.js');
 
 class LLKthFromEnd extends LinkedList {
   kthFromEnd(k) {
@@ -7,27 +7,29 @@ class LLKthFromEnd extends LinkedList {
       throw new Error('input value out of range');
     }
 
-    let walker = this.head;
-    let runner = this.head;
-    let distance = 1;
+    const dummy = new Node(0);
+    dummy.next = this.head;
+    let curr = this.head;
+    let len = 0;
 
-    while (runner.next) {
-      runner = runner.next;
-      distance++;
+    while (curr) {
+      len++;
+      curr = curr.next;
     }
 
-    if (k > distance) {
+    if (k > len) {
       throw new Error('input value out of range');
     }
 
-    let diff = distance - k;
+    len -= k;
+    curr = dummy;
 
-    while (diff > 1) {
-      diff--;
-      walker = walker.next;
+    while (len) {
+      len--;
+      curr = curr.next;
     }
 
-    return walker.val;
+    return curr.val;
   }
 
   findMiddle() {

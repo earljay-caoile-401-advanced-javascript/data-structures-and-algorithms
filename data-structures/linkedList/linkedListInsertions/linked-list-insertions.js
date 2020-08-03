@@ -53,21 +53,21 @@ class LinkedListInsertions extends LinkedList {
   }
 
   delete(val) {
-    let current = this.head;
-    if (current.val === val) {
-      this.head = current.next;
-      current.next = null;
-      return;
-    }
+    const dummy = new Node(0);
+    dummy.next = this.head;
+    let prev = dummy;
+    let curr = this.head;
 
-    while (current.next) {
-      if (current.next.val === val) {
-        let oldNode = current.next;
-        current.next = current.next.next;
-        oldNode.next = null;
+    while (curr) {
+      if (curr.val === val) {
+        prev.next = curr.next;
+        curr.next = null;
+        this.head = dummy.next;
         return;
       }
-      current = current.next;
+
+      prev = curr;
+      curr = curr.next;
     }
 
     throw new Error('value does not exist in linked list');

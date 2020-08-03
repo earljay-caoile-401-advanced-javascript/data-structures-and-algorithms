@@ -1,6 +1,7 @@
 'use strict';
 const {
   LinkedList,
+  Node,
 } = require('../../../data-structures/linkedList/linked-list.js');
 
 const mergeLists = (list1, list2) => {
@@ -32,28 +33,24 @@ const mergeListsSorted = (list1, list2) => {
   let curr1 = list1.head;
   let curr2 = list2.head;
 
-  if (curr1.val < curr2.val) {
-    res.head = curr1;
-    curr1 = curr1.next;
-  } else {
-    res.head = curr2;
-    curr2 = curr2.next;
-  }
-
-  let currRes = res.head;
+  let dummy = new Node(0);
+  let mainCurr = dummy;
 
   while (curr1 && curr2) {
-    if (curr1.val < curr2.val) {
-      currRes.next = curr1;
+    if (curr1.val <= curr2.val) {
+      mainCurr.next = curr1;
       curr1 = curr1.next;
     } else {
-      currRes.next = curr2;
+      mainCurr.next = curr2;
       curr2 = curr2.next;
     }
-    currRes = currRes.next;
+
+    mainCurr = mainCurr.next;
   }
 
-  currRes.next = curr1 ? curr1 : curr2;
+  mainCurr.next = curr1 || curr2;
+  res.head = dummy.next;
+
   return res;
 };
 
